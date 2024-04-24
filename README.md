@@ -1,4 +1,4 @@
-# blockchain-core
+# blockchain
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin http://gitlab.xbit.trade/blockchain/blockchain-core.git
+git remote add origin http://gitlab.xbit.trade/blockchain/blockchain.git
 git branch -M master
 git push -uf origin master
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](http://gitlab.xbit.trade/blockchain/blockchain-core/-/settings/integrations)
+- [ ] [Set up project integrations](http://gitlab.xbit.trade/blockchain/blockchain/-/settings/integrations)
 
 ## Collaborate with your team
 
