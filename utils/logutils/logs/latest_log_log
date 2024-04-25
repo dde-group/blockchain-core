@@ -1,0 +1,15 @@
+2023-11-28 17:39:19.571	[34minfo[0m	testing/testing.go:1446	info	{"symbol": "btc", "req": "123", "reqId": 123}
+2023-11-28 17:39:24.751	[34minfo[0m	testing/testing.go:1446	info	{"symbol": "btc", "req": "123", "reqId": 123}
+2023-11-28 17:42:58.579	[34minfo[0m	testing/testing.go:1446	info	{"symbol": "btc", "req": "123", "reqId": 123}
+2023-11-28 17:43:32.951	[34minfo[0m	testing/testing.go:1446	info	{"symbol": "btc", "req": "123", "reqId": 123}
+2023-11-28 17:43:32.952	[34minfo[0m	logutils/zap_test.go:31	success
+2023-11-28 17:44:21.589	[34minfo[0m	testing/testing.go:1446	info	{"symbol": "btc", "req": "123", "reqId": 123}
+2023-11-28 17:44:21.590	[34minfo[0m	logutils/zap_test.go:31	success
+2023-11-28 17:44:37.115	[34minfo[0m	testing/testing.go:1446	info	{"symbol": "btc", "req": "123", "reqId": 123}
+2023-11-28 17:44:37.116	[34minfo[0m	logutils/zap_test.go:31	success
+2023-11-28 17:45:54.955	[34minfo[0m	testing/testing.go:1446	info	{"symbol": "btc", "req": "123", "reqId": 123}
+2023-11-28 17:45:54.956	[34minfo[0m	logutils/zap_test.go:31	success
+2023-11-28 17:46:05.340	[34minfo[0m	testing/testing.go:1446	info	{"symbol": "btc", "req": "123", "reqId": 123}
+2023-11-28 17:46:05.341	[34minfo[0m	logutils/zap_test.go:31	success
+2023-11-28 17:46:20.664	[34minfo[0m	testing/testing.go:1446	info	{"symbol": "btc", "req": "123", "reqId": 123}
+2023-11-28 17:46:20.666	[34minfo[0m	logutils/zap_test.go:31	success

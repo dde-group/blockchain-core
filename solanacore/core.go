@@ -1,12 +1,14 @@
 package solanacore
 
 import (
+	"fmt"
 	"github.com/gagliardetto/solana-go/rpc"
 	"sync"
 )
 
 type Core struct {
-	client *rpc.Client
+	client  *rpc.Client
+	WsAgent *WebsocketAgent
 
 	decimalsCache sync.Map
 	//获取最新区块
@@ -15,12 +17,21 @@ type Core struct {
 	minimumBalanceForRentExemptionHandler *getMinimumBalanceForRentExemptionHandler
 }
 
-func NewCore(client *rpc.Client) *Core {
+func NewCore(rpcEndpoint, wsEndpoint string) (*Core, error) {
+	client := rpc.New(rpcEndpoint)
+
+	wsAgent := NewWebsocketAgent(wsEndpoint)
+	err := wsAgent.Connect()
+	if nil != err {
+		return nil, fmt.Errorf("ws connect err: %s", err.Error())
+	}
+
 	ret := &Core{
 		client:                                client,
+		WsAgent:                               wsAgent,
 		latestBlockHashSchedule:               newGetLatestBlockHashHandler(client),
 		minimumBalanceForRentExemptionHandler: newGetMinimumBalanceForRentExemptionSchedule(client),
 	}
 
-	return ret
+	return ret, nil
 }
