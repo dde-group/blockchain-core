@@ -3,8 +3,8 @@ package dumputils
 import (
 	"bytes"
 	"errors"
-	"gitlab.xbit.trade/blockchain/blockchain-core/utils"
-	"gitlab.xbit.trade/blockchain/blockchain-core/utils/logutils"
+	"github.com/dde-group/blockchain-core/utils"
+	"github.com/dde-group/blockchain-core/utils/logutils"
 	"go.uber.org/zap"
 	"runtime"
 )

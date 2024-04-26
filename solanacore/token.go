@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/gagliardetto/solana-go"
 	"github.com/shopspring/decimal"
-	"gitlab.xbit.trade/blockchain/blockchain-core"
 	"math/big"
 )
 

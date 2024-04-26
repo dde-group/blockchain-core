@@ -1,4 +1,4 @@
-module gitlab.xbit.trade/blockchain/blockchain-core
+module github.com/dde-group/blockchain-core
 
 go 1.21.8
 

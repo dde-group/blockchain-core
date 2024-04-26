@@ -10,8 +10,8 @@ package logutils
 import (
 	"context"
 	"fmt"
+	"github.com/dde-group/blockchain-core/utils/fileutils"
 	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
-	"gitlab.xbit.trade/blockchain/blockchain-core/utils/fileutils"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"os"

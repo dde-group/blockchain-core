@@ -8,11 +8,11 @@ package middleware
  */
 
 import (
+	"github.com/dde-group/blockchain-core/utils/dumputils"
+	"github.com/dde-group/blockchain-core/utils/logutils"
+	"github.com/dde-group/blockchain-core/utils/routerbase"
 	"github.com/gin-gonic/gin"
 	"github.com/juju/ratelimit"
-	"gitlab.xbit.trade/blockchain/blockchain-core/utils/dumputils"
-	"gitlab.xbit.trade/blockchain/blockchain-core/utils/logutils"
-	"gitlab.xbit.trade/blockchain/blockchain-core/utils/routerbase"
 	"go.uber.org/zap"
 	"runtime/debug"
 	"time"

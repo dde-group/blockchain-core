@@ -10,9 +10,9 @@ package network
 import (
 	"context"
 	"fmt"
+	"github.com/dde-group/blockchain-core/utils/logutils"
 	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
-	"gitlab.xbit.trade/blockchain/blockchain-core/utils/logutils"
 	"go.uber.org/zap"
 	"net/http"
 	"net/url"
