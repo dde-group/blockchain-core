@@ -92,3 +92,44 @@ func (agent *WebsocketAgent) BlockSubscribeMentions(mentions solana.PublicKey, c
 	return sub, nil
 
 }
+
+func (agent *WebsocketAgent) ParsedBlockSubscribeMentions(
+	mentions solana.PublicKey,
+	commitment rpc.CommitmentType,
+	handler func(result *ws.ParsedBlockResult)) (*ws.ParsedBlockSubscription, error) {
+
+	maxVersion := uint64(0)
+	sub, err := agent.client.ParsedBlockSubscribe(
+		&ws.BlockSubscribeFilterMentionsAccountOrProgram{
+			Pubkey: mentions,
+		},
+		//ws.BlockSubscribeFilterAll(""),
+		&ws.BlockSubscribeOpts{
+			Commitment:                     commitment,
+			MaxSupportedTransactionVersion: &maxVersion,
+			TransactionDetails:             "full",
+			Encoding:                       solana.EncodingJSONParsed,
+		},
+	)
+	if nil != err {
+		return nil, fmt.Errorf("subcribe err: %s", err.Error())
+	}
+
+	go func() {
+		var result *ws.ParsedBlockResult
+		for {
+			result, err = sub.Recv()
+			if nil != err {
+				//TODO reconnect
+				break
+			}
+
+			if nil != handler {
+				handler(result)
+			}
+		}
+	}()
+
+	return sub, nil
+
+}

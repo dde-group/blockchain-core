@@ -11,8 +11,9 @@ const (
 type SwapDirection uint8
 
 const (
-	Pc2Coin SwapDirection = 1
-	Coin2Pc SwapDirection = 2
+	DirectionUnknown SwapDirection = 0
+	Pc2Coin          SwapDirection = 1
+	Coin2Pc          SwapDirection = 2
 )
 
 const (

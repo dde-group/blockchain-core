@@ -1,5 +1,7 @@
 package raydium
 
+import "github.com/gagliardetto/solana-go"
+
 type PoolInfo struct {
 	Owner    string
 	OpenTime int64
@@ -68,4 +70,12 @@ type SerumMarketInfo struct {
 	SerumCoinVaultAccount string
 	SerumPcVaultAccount   string
 	SerumVaultSigner      string
+}
+
+type InstructionPoolAccountsDetail struct {
+	Index          uint64
+	SubIndex       uint64
+	AmmId          solana.PublicKey
+	AmmCoinAccount solana.PublicKey
+	AmmPcAccount   solana.PublicKey
 }

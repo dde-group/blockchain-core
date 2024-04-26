@@ -2,6 +2,7 @@ package raydium
 
 import (
 	"fmt"
+	"github.com/gagliardetto/solana-go"
 	"github.com/shopspring/decimal"
 	"math/big"
 )
@@ -87,4 +88,14 @@ func calcTotalWithoutTakePnlNoOrderBook(pcAmount, coinAmount uint64, amm *AmmInf
 		return 0, 0, fmt.Errorf("coinAmount is less than NeedTakePnlCoin")
 	}
 	return pcWithoutTakePnl, coinWithoutTakePnl, nil
+}
+
+func GetInstructionPoolAccountDetail(accounts []solana.PublicKey) *InstructionPoolAccountsDetail {
+	ret := &InstructionPoolAccountsDetail{
+		AmmId:          accounts[1],
+		AmmCoinAccount: accounts[5],
+		AmmPcAccount:   accounts[6],
+	}
+
+	return ret
 }

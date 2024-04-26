@@ -11,3 +11,7 @@ const (
 	NativeSOL = "11111111111111111111111111111111"
 	WrapSOL   = "So11111111111111111111111111111111111111112"
 )
+
+const (
+	InstTypeTransfer = "transfer"
+)
