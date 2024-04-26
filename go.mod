@@ -1,6 +1,6 @@
 module github.com/dde-group/blockchain-core
 
-go 1.21.8
+go 1.21
 
 require (
 	github.com/fsnotify/fsnotify v1.4.7
@@ -8,6 +8,7 @@ require (
 	github.com/gagliardetto/solana-go v1.10.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-resty/resty/v2 v2.12.0
+	github.com/goccy/go-json v0.10.2
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/websocket v1.4.2
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
@@ -21,10 +22,7 @@ require (
 	google.golang.org/grpc v1.28.0
 )
 
-replace (
-	//github.com/gagliardetto/solana-go => github.com/dde-group/solana-go-fork v1.111.1
-	github.com/gagliardetto/solana-go => ../solana-go-fork
-)
+replace github.com/gagliardetto/solana-go => github.com/dde-group/solana-go-fork v1.111.1
 
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1 // indirect
@@ -42,7 +40,6 @@ require (
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.14.0 // indirect
-	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang/protobuf v1.5.0 // indirect
 	github.com/gorilla/rpc v1.2.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
