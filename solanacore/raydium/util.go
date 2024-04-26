@@ -91,10 +91,20 @@ func calcTotalWithoutTakePnlNoOrderBook(pcAmount, coinAmount uint64, amm *AmmInf
 }
 
 func GetInstructionPoolAccountDetail(accounts []solana.PublicKey) *InstructionPoolAccountsDetail {
+	var ammId, ammCoinAccount, ammPcAccount solana.PublicKey
+	if len(accounts) == Account_Len {
+		ammId = accounts[1]
+		ammCoinAccount = accounts[4]
+		ammPcAccount = accounts[5]
+	} else if len(accounts) == Account_Len+1 {
+		ammId = accounts[1]
+		ammCoinAccount = accounts[5]
+		ammPcAccount = accounts[6]
+	}
 	ret := &InstructionPoolAccountsDetail{
-		AmmId:          accounts[1],
-		AmmCoinAccount: accounts[5],
-		AmmPcAccount:   accounts[6],
+		AmmId:          ammId,
+		AmmCoinAccount: ammCoinAccount,
+		AmmPcAccount:   ammPcAccount,
 	}
 
 	return ret

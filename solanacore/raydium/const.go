@@ -20,3 +20,7 @@ const (
 	LIQUIDITY_FEES_NUMERATOR   = 25
 	LIQUIDITY_FEES_DENOMINATOR = 10000
 )
+
+const (
+	Account_Len = 17
+)

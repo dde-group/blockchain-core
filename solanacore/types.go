@@ -85,7 +85,7 @@ func ParserInstructionInfo(inst *rpc.ParsedInstruction) (*ParsedInstructionInfo,
 
 type SwapInstructionResult struct {
 	Slot           uint64
-	Mentions       solana.PublicKey //交易所account
+	Interact       solana.PublicKey //交易所account
 	Index          uint64           //tx index，因为订阅的不是全部交易，因此仅仅是相关交易所的交易的index
 	InstIndex      uint64           //instruction index
 	SubIndex       uint64           //inner instruction index

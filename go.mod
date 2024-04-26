@@ -22,7 +22,7 @@ require (
 	google.golang.org/grpc v1.28.0
 )
 
-replace github.com/gagliardetto/solana-go => github.com/dde-group/solana-go-fork v1.111.1
+replace github.com/gagliardetto/solana-go => github.com/dde-group/solana-go-fork v1.111.2
 
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1 // indirect

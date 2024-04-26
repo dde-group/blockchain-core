@@ -34,7 +34,7 @@ func Test_BlockSub(t *testing.T) {
 				if nil != tx.Meta.Err {
 					continue
 				}
-				swapResult := ParseSwapResultFromTx(slot, txIdx, &tx)
+				swapResult := ParseSwapRaydiumV4ResultFromTx(slot, txIdx, &tx)
 
 				swapResult = swapResult
 			}

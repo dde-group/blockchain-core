@@ -18,8 +18,11 @@ func (c *Core) GetAccountToken(ctx context.Context, account solana.PublicKey) (s
 	data := out.Value.Data.GetBinary()
 	dec := bin.NewBinDecoder(data)
 	err = dec.Decode(&tokenAcc)
+	if nil != err {
+		return solana.PublicKey{}, fmt.Errorf("invalid token account, err: %s", err.Error())
+	}
 
-	return out.Value.Owner, nil
+	return tokenAcc.Mint, nil
 
 }
 

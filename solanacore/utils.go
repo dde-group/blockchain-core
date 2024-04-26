@@ -8,13 +8,14 @@ import (
 	"go.uber.org/zap"
 )
 
-func ParseSwapResultFromTx(slot uint64, txIdx int, tx *rpc.TransactionParsedWithMeta) []*SwapInstructionResult {
+func ParseSwapRaydiumV4ResultFromTx(slot uint64, txIdx int, tx *rpc.TransactionParsedWithMeta) []*SwapInstructionResult {
 
 	rawTx := tx.Transaction
 	txHash := rawTx.Signatures[0]
 	hash := txHash.String()
 
 	accountKeys := rawTx.Message.AccountKeys
+	interact := solana.MustPublicKeyFromBase58(raydium.LiquidityPoolProgramV4)
 
 	accountKeys[0] = accountKeys[0]
 
@@ -23,7 +24,7 @@ func ParseSwapResultFromTx(slot uint64, txIdx int, tx *rpc.TransactionParsedWith
 	//解析直接调用的inst
 	for index, inst := range rawTx.Message.Instructions {
 		programId := inst.ProgramId
-		if !programId.Equals(solana.MustPublicKeyFromBase58(raydium.LiquidityPoolProgramV4)) {
+		if !programId.Equals(interact) {
 			continue
 		}
 		detail := raydium.GetInstructionPoolAccountDetail(inst.Accounts)
@@ -54,6 +55,7 @@ func ParseSwapResultFromTx(slot uint64, txIdx int, tx *rpc.TransactionParsedWith
 			swapResult.AmmPcAccount = detail.AmmPcAccount
 
 			swapResult.Slot = slot
+			swapResult.Interact = interact
 			swapResult.Hash = txHash
 			swapResult.Index = uint64(txIdx)
 			swapResult.InstIndex = instIndex
@@ -68,7 +70,7 @@ func ParseSwapResultFromTx(slot uint64, txIdx int, tx *rpc.TransactionParsedWith
 				continue
 			}
 			programId := inst.ProgramId
-			if !programId.Equals(solana.MustPublicKeyFromBase58(raydium.LiquidityPoolProgramV4)) {
+			if !programId.Equals(interact) {
 				continue
 			}
 			//处理radium inner inst59*
@@ -88,6 +90,7 @@ func ParseSwapResultFromTx(slot uint64, txIdx int, tx *rpc.TransactionParsedWith
 			swapResult.AmmPcAccount = detail.AmmPcAccount
 
 			swapResult.Slot = slot
+			swapResult.Interact = interact
 			swapResult.Hash = txHash
 			swapResult.Index = uint64(txIdx)
 			swapResult.InstIndex = instIndex
