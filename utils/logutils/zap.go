@@ -40,7 +40,7 @@ var DefaultZapConfig = ZapConfig{
 	LinkName:     "logs/latest_log.log",
 	LogInConsole: true,
 	EncodeLevel:  "LowercaseColorLevelEncoder",
-	ShowLine:     true,
+	ShowLine:     false,
 }
 
 const LogCtxKey = "log_ctx_module"

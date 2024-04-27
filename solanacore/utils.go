@@ -8,16 +8,42 @@ import (
 	"go.uber.org/zap"
 )
 
+func ParseSwapRayV4ResultFromRawTx(slot uint64, txIdx int, rawTx *solana.Transaction) []*SwapInstructionResult {
+	txHash := rawTx.Signatures[0]
+	hash := txHash.String()
+	hash = hash
+
+	interact := solana.MustPublicKeyFromBase58(raydium.LiquidityPoolProgramV4)
+
+	raydiumDetailCache := make(map[uint64]*raydium.InstructionPoolAccountsDetail)
+	ret := make([]*SwapInstructionResult, 0, 2)
+	//解析直接调用的inst
+	for index, inst := range rawTx.Message.Instructions {
+		programId, err := rawTx.Message.Account(inst.ProgramIDIndex)
+		if err != nil {
+
+		}
+
+		if !programId.Equals(interact) {
+			continue
+		}
+		detail := raydium.GetInstructionPoolAccountDetail(inst.Accounts)
+		detail.Index = uint64(index)
+		raydiumDetailCache[detail.Index] = detail
+		//raydiumDetailList = append(raydiumDetailList, detail)
+		break
+	}
+
+	return nil
+}
+
 func ParseSwapRaydiumV4ResultFromTx(slot uint64, txIdx int, tx *rpc.TransactionParsedWithMeta) []*SwapInstructionResult {
 
 	rawTx := tx.Transaction
 	txHash := rawTx.Signatures[0]
 	hash := txHash.String()
 
-	accountKeys := rawTx.Message.AccountKeys
 	interact := solana.MustPublicKeyFromBase58(raydium.LiquidityPoolProgramV4)
-
-	accountKeys[0] = accountKeys[0]
 
 	raydiumDetailCache := make(map[uint64]*raydium.InstructionPoolAccountsDetail)
 	ret := make([]*SwapInstructionResult, 0, 2)
